@@ -224,14 +224,18 @@ export class PressbooksMultiselect extends LitElement {
 
   get _select() {
     const slot = this.shadowRoot.querySelector('slot');
-    return slot.assignedElements().filter(node => node.matches('select[multiple]'))[0];
+    return slot
+      .assignedElements()
+      .filter(node => node.matches('select[multiple]'))[0];
   }
 
   get _hint() {
     const slot = this.shadowRoot.querySelector('slot');
     if (this._select.getAttribute('aria-describedby')) {
       const hintId = this._select.getAttribute('aria-describedby');
-      return slot.assignedElements().filter(node => node.matches(`#${hintId}`))[0];
+      return slot
+        .assignedElements()
+        .filter(node => node.matches(`#${hintId}`))[0];
     }
 
     return false;
@@ -269,7 +273,9 @@ export class PressbooksMultiselect extends LitElement {
           )}
         </ul>
         <div>
-          <span class="screen-reader-text" id="${this.htmlId}-hint">${this.hint ?? nothing}</span>
+          <span class="screen-reader-text" id="${this.htmlId}-hint"
+            >${this.hint ?? nothing}</span
+          >
           <input
             aria-controls="${this.htmlId}-listbox"
             aria-activedescendant="${this.htmlId}-${this.activeIndex}"
@@ -342,11 +348,14 @@ export class PressbooksMultiselect extends LitElement {
   }
 
   _handleWindowClick(event) {
-    if (!this.shadowRoot.contains(event.target) && !this.contains(event.target)) {
+    if (
+      !this.shadowRoot.contains(event.target) &&
+      !this.contains(event.target)
+    ) {
       this.open = false;
       this.update();
     }
-  };
+  }
 
   addOption(option) {
     this._select
