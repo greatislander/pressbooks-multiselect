@@ -7,21 +7,12 @@ export class PressbooksMultiselect extends LitElement {
         font-size: var(--pb-multiselect-font-size, 1rem);
       }
 
-      .hidden {
-        display: none;
+      * {
+        box-sizing: border-box;
       }
 
-      .screen-reader-text {
-        border: 0;
-        clip: rect(1px, 1px, 1px, 1px);
-        clip-path: inset(50%);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-        word-wrap: normal !important;
+      .hidden {
+        display: none;
       }
 
       .selected-options {
@@ -37,11 +28,11 @@ export class PressbooksMultiselect extends LitElement {
         background: var(--pb-button-secondary-background, #f6f7f7);
         border-radius: var(--pb-button-border-radius, 3px);
         border: var(--pb-button-secondary-border, 1px #d4002d solid);
-        box-sizing: border-box;
         color: var(--pb-button-secondary-color, #d4002d);
         cursor: pointer;
         display: inline-flex;
         font-size: var(--pb-button-font-size, 13px);
+        font-family: var(--pb-button-font-family, inherit);
         gap: var(--pb-button-gap, 0.125em);
         line-height: var(--pb-button-line-height, 2.15384615);
         margin: 0;
@@ -78,42 +69,9 @@ export class PressbooksMultiselect extends LitElement {
         color: var(--pb-button-secondary-color-active, #262a2e);
       }
 
-      .selected-options button svg,
-      .combo-option svg {
+      .selected-options button svg {
         width: var(--pb-button-icon-size, 1.25em);
         height: var(--pb-button-icon-size, 1.25em);
-      }
-
-      .combo-option {
-        align-items: center;
-        cursor: default;
-        display: flex;
-        gap: 0.125em;
-        padding: 0.25rem 0.5rem;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      }
-
-      .combo-option:last-of-type {
-        border-bottom-left-radius: var(--pb-input-border-radius, 4px);
-        border-bottom-right-radius: var(--pb-input-border-radius, 4px);
-      }
-
-      .combo-option[aria-selected='true'] {
-        background: #d4002d;
-        color: white;
-      }
-
-      .combo-option:hover,
-      .combo-option.option-current {
-        background: #dedede;
-        color: #000;
-      }
-
-      .combo-option:active,
-      .combo-option:active:hover {
-        background: #333;
-        color: #fff;
       }
 
       input {
@@ -121,7 +79,6 @@ export class PressbooksMultiselect extends LitElement {
         border-radius: var(--pb-input-border-radius, 4px);
         border: var(--pb-input-border, 1px solid #8c8f94);
         box-shadow: var(--pb-input-box-shadow, 0 0 0 transparent);
-        box-sizing: border-box;
         color: var(--pb-input-color, #2c3338);
         font-size: var(--pb-input-font-size, 14px);
         line-height: var(--pb-input-line-height, 2);
@@ -136,7 +93,6 @@ export class PressbooksMultiselect extends LitElement {
         outline: var(--pb-input-outline-focus, 2px solid transparent);
       }
 
-      /** TODO: Props etc. */
       input.combo-open {
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
@@ -145,17 +101,46 @@ export class PressbooksMultiselect extends LitElement {
       .combo-menu {
         width: 100%;
         box-sizing: border-box;
-        border-bottom: var(--pb-input-border, 1px solid #8c8f94);
-        border-left: var(--pb-input-border, 1px solid #8c8f94);
-        border-right: var(--pb-input-border, 1px solid #8c8f94);
+        border-bottom: var(--pb-combo-menu-border, 1px solid #8c8f94);
+        border-left: var(--pb-combo-menu-border, 1px solid #8c8f94);
+        border-right: var(--pb-combo-menu-border, 1px solid #8c8f94);
         box-shadow: 0;
-        border-bottom-left-radius: var(--pb-input-border-radius, 4px);
-        border-bottom-right-radius: var(--pb-input-border-radius, 4px);
+        border-bottom-left-radius: var(--pb-combo-menu-border-radius, 4px);
+        border-bottom-right-radius: var(--pb-combo-menu-border-radius, 4px);
       }
 
       input:focus + .combo-menu {
         border-color: var(--pb-input-border-color-focus, #d4002d);
         box-shadow: var(--pb-input-box-shadow-focus, 0 0 0 1px #d4002d);
+      }
+
+      .combo-option {
+        background: var(--pb-combo-option-background, #fff);
+        cursor: default;
+        padding: var(--pb-combo-option-padding, 0.25rem 0.5rem);
+        font-family: var(--pb-combo-option-font-family, inherit);
+      }
+
+      .combo-option:hover,
+      .combo-option.option-current {
+        background: var(--pb-combo-option-background-hover, #dedede);
+        color: var(--pb-combo-option-color-hover, #000);
+      }
+
+      .combo-option:active,
+      .combo-option:active:hover {
+        background: var(--pb-combo-option-background-active, #333);
+        color: var(--pb-combo-option-color-active, #fff);
+      }
+
+      .combo-option[aria-selected='true'] {
+        background: var(--pb-combo-option-background-selected, #d4002d);
+        color: var(--pb-combo-option-color-selected, #fff);
+      }
+
+      .combo-option:last-of-type {
+        border-bottom-left-radius: var(--pb-combo-menu-border-radius, 3px);
+        border-bottom-right-radius: var(--pb-combo-menu-border-radius, 3px);
       }
     `;
   }
@@ -273,9 +258,7 @@ export class PressbooksMultiselect extends LitElement {
           )}
         </ul>
         <div>
-          <span class="screen-reader-text" id="${this.htmlId}-hint"
-            >${this.hint ?? nothing}</span
-          >
+          <span id="${this.htmlId}-hint" hidden>${this.hint ?? nothing}</span>
           <input
             aria-controls="${this.htmlId}-listbox"
             aria-activedescendant="${this.htmlId}-${this.activeIndex}"
