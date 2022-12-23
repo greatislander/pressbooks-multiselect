@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/greatislander/pressbooks-multiselect/compare/v1.0.0...v1.0.1) (2022-12-23)
+
+
+### Bug Fixes
+
+* add .npmignore ([#14](https://github.com/greatislander/pressbooks-multiselect/issues/14)) ([05ca297](https://github.com/greatislander/pressbooks-multiselect/commit/05ca297a2a125f27e767d0558f5b7c0c62c1a82e))
+
 ## [1.0.0](https://github.com/greatislander/pressbooks-multiselect/compare/v0.0.1...v1.0.0) (2022-12-23)
 
 
