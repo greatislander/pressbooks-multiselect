@@ -99,3 +99,11 @@ npm start
 ```
 
 To run a local development server that serves the basic demo located in `demo/index.html`
+
+## Publishing to NPM
+
+As this is a scoped package it must be published by someone within the Pressbooks NPM organization and must use the `--access public` flag:
+
+```bash
+npm publish --access public
+```
