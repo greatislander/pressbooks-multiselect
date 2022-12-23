@@ -272,7 +272,7 @@ export class PressbooksMultiselect extends LitElement {
           <span class="screen-reader-text" id="${this.htmlId}-hint">${this.hint ?? nothing}</span>
           <input
             aria-controls="${this.htmlId}-listbox"
-            aria-activedescendant="${this.activeIndex}"
+            aria-activedescendant="${this.htmlId}-${this.activeIndex}"
             aria-autocomplete="list"
             aria-expanded="${this.open}"
             aria-haspopup="listbox"
@@ -298,7 +298,7 @@ export class PressbooksMultiselect extends LitElement {
                   class="combo-option ${this.activeIndex === index
                     ? 'option-current'
                     : ''}"
-                  id="${this.htmlId}-${option}"
+                  id="${this.htmlId}-${index}"
                   aria-selected="${this.selectedOptions.indexOf(option) > -1}"
                   role="option"
                   data-option="${option}"
