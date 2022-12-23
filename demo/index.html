@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-inline: auto;
+        margin-block-start: 20rem;
+        max-inline-size: 60ch;
+        width: 100%;
+        padding-inline: 1rem;
+      }
+
+      label {
+        font-weight: 600;
+        display: block;
+      }
+
+      pb-multiselect {
+        display: block;
+      }
+  </style>
+</head>
+<body>
+  <main id="main">
+    <pressbooks-multiselect>
+      <label for="dwarves">Dwarves</label>
+        <p id="dwarves-hint">Type to select the names of your party’s dwarves.</p>
+        <select
+          id="dwarves"
+          name="dwarves[]"
+          multiple
+          aria-describedby="dwarves-hint"
+        >
+          <option value="thorin">Thorin</option>
+          <option value="dwalin">Dwalin</option>
+          <option value="balin">Balin</option>
+          <option value="bifur" selected>Bifur</option>
+          <option value="bofur" selected>Bofur</option>
+          <option value="bombur" selected>Bombur</option>
+          <option value="fili">Fili</option>
+          <option value="kili">Kili</option>
+          <option value="oin">Oin</option>
+          <option value="gloin">Gloin</option>
+          <option value="nori">Nori</option>
+          <option value="dori">Dori</option>
+          <option value="ori">Ori</option>
+        </select>
+    </pressbooks-multiselect>
+  </main>
+
+  <script type="module" src="../pressbooks-multiselect.js"></script>
+</body>
+</html>
