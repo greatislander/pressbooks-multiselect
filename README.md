@@ -10,13 +10,33 @@ npm i @pressbooks/multiselect
 
 ## Usage
 
+Wrap a `<select>` element with the `multiple` attribute and a semantically valid label in the
+`<pressbooks-multiselect>` tag.
+
 ```html
 <script type="module">
   import '@pressbooks/multiselect/pressbooks-multiselect.js';
 </script>
 
-<pressbooks-multiselect></pressbooks-multiselect>
+<pressbooks-multiselect>
+  <label for="selections">Multiple Selections</label>
+  <select id="selections" name="selections[]">
+    <option value="option-1">Option 1</option>
+    <!-- Et cetera. -->
+  </select>
+</pressbooks-multiselect>
 ```
+
+If you wrap a single select or a select element without a valid label, the component will not render and your existing
+markup will be displayed without modification.
+
+If the `<select>` element has a relationship with a hint via the `aria-describedby` attribute, the hint will be attached
+to the rendered component as well.
+
+### Styling
+
+Because this web component uses the Shadow Dom, styling is limited to modification via CSS custom properties. However,
+[there are plenty to choose from](https://github.com/greatislander/pressbooks-multiselect/blob/a87fab1f7b3ea967b3ae6b58400ed863084326ee/src/PressbooksMultiselect.js).
 
 ## Linting and formatting
 
@@ -59,7 +79,6 @@ To build a production version of Storybook, run
 ```bash
 npm run storybook:build
 ```
-
 
 ## Tooling configs
 

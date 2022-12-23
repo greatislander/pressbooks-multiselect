@@ -32,7 +32,18 @@ export class PressbooksMultiselect extends LitElement {
         cursor: pointer;
         display: inline-flex;
         font-size: var(--pb-button-font-size, 13px);
-        font-family: var(--pb-button-font-family, inherit);
+        font-family: var(
+          --pb-button-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen-Sans,
+          Ubuntu,
+          Cantarell,
+          'Helvetica Neue',
+          sans-serif
+        );
         gap: var(--pb-button-gap, 0.125em);
         line-height: var(--pb-button-line-height, 2.15384615);
         margin: 0;
@@ -81,6 +92,18 @@ export class PressbooksMultiselect extends LitElement {
         box-shadow: var(--pb-input-box-shadow, 0 0 0 transparent);
         color: var(--pb-input-color, #2c3338);
         font-size: var(--pb-input-font-size, 14px);
+        font-family: var(
+          --pb-input-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen-Sans,
+          Ubuntu,
+          Cantarell,
+          'Helvetica Neue',
+          sans-serif
+        );
         line-height: var(--pb-input-line-height, 2);
         min-height: var(--pb-input-min-height, 30px);
         padding: var(--pb-input-padding, 0 8px);
@@ -118,7 +141,18 @@ export class PressbooksMultiselect extends LitElement {
         background: var(--pb-combo-option-background, #fff);
         cursor: default;
         padding: var(--pb-combo-option-padding, 0.25rem 0.5rem);
-        font-family: var(--pb-combo-option-font-family, inherit);
+        font-family: var(
+          --pb-combo-option-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen-Sans,
+          Ubuntu,
+          Cantarell,
+          'Helvetica Neue',
+          sans-serif
+        );
       }
 
       .combo-option:hover,
@@ -226,79 +260,95 @@ export class PressbooksMultiselect extends LitElement {
     return false;
   }
 
+  selectionsTemplate() {
+    return html`<ul class="selected-options">
+      <span id="${this.htmlId}-remove" hidden>remove</span>
+      ${this.selectedOptions.map(
+        option => html`<li>
+          <button
+            class="remove-option"
+            type="button"
+            aria-describedby="${this.htmlId}-remove"
+            data-option="${option}"
+            @click="${this._handleRemove}"
+          >
+            <span>${this.options[option]}</span
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+              role="presentation"
+              fill="currentColor"
+            >
+              <path
+                d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+              />
+            </svg>
+          </button>
+        </li>`
+      )}
+    </ul>`;
+  }
+
+  hintTemplate() {
+    return html`<span id="${this.htmlId}-hint" hidden>${this.hint}</span>`;
+  }
+
+  comboBoxTemplate() {
+    return html`<div>
+      ${this.hint ? this.hintTemplate() : nothing}
+      <input
+        aria-controls="${this.htmlId}-listbox"
+        aria-activedescendant="${this.htmlId}-${this.activeIndex}"
+        aria-autocomplete="list"
+        aria-expanded="${this.open}"
+        aria-haspopup="listbox"
+        aria-label="${this.label}"
+        aria-describedby="${this.htmlId}-hint"
+        class="combo-input${this.open ? ' combo-open' : ''}"
+        role="combobox"
+        type="text"
+        @input="${this._handleInput}"
+        @focus="${this._handleInputFocus}"
+        @keydown="${this._handleInputKeydown}"
+      />
+      <div
+        class="combo-menu ${this.open ? '' : 'hidden'}"
+        role="listbox"
+        aria-multiselectable="true"
+        id="${this.htmlId}-listbox"
+      >
+        ${Object.keys(this.filteredOptions).map(
+          (option, index) =>
+            // Keyboard event is handled within the listbox's _handleInputKeydown event.
+            // eslint-disable-next-line lit-a11y/click-events-have-key-events
+            html` <div
+              class="combo-option ${this.activeIndex === index
+                ? 'option-current'
+                : ''}"
+              id="${this.htmlId}-${index}"
+              aria-selected="${this.selectedOptions.indexOf(option) > -1}"
+              role="option"
+              data-option="${option}"
+              @click="${this._handleOptionClick}"
+            >
+              ${this.options[option]}
+            </div>`
+        )}
+      </div>
+    </div> `;
+  }
+
   render() {
     return html`
-      <div class="multiselect">
+      <div class="pressbooks-multiselect">
         <slot></slot>
-        <ul class="selected-options">
-          <span id="${this.htmlId}-remove" hidden>remove</span>
-          ${this.selectedOptions.map(
-            option => html`<li>
-              <button
-                class="remove-option"
-                type="button"
-                aria-describedby="${this.htmlId}-remove"
-                data-option="${option}"
-                @click="${this.handleRemove}"
-              >
-                <span>${this.options[option]}</span
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                  role="presentation"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-                  />
-                </svg>
-              </button>
-            </li>`
-          )}
-        </ul>
-        <div>
-          <span id="${this.htmlId}-hint" hidden>${this.hint ?? nothing}</span>
-          <input
-            aria-controls="${this.htmlId}-listbox"
-            aria-activedescendant="${this.htmlId}-${this.activeIndex}"
-            aria-autocomplete="list"
-            aria-expanded="${this.open}"
-            aria-haspopup="listbox"
-            aria-label="${this.label}"
-            aria-describedby="${this.htmlId}-hint"
-            class="combo-input${this.open ? ' combo-open' : ''}"
-            role="combobox"
-            type="text"
-            @input="${this.handleInput}"
-            @focus="${this.handleInputFocus}"
-            @keydown="${this.handleInputKeydown}"
-          />
-          <div
-            class="combo-menu ${this.open ? '' : 'hidden'}"
-            role="listbox"
-            aria-multiselectable="true"
-            id="${this.htmlId}-listbox"
-          >
-            ${Object.keys(this.filteredOptions).map(
-              (option, index) =>
-                // eslint-disable-next-line lit-a11y/click-events-have-key-events
-                html` <div
-                  class="combo-option ${this.activeIndex === index
-                    ? 'option-current'
-                    : ''}"
-                  id="${this.htmlId}-${index}"
-                  aria-selected="${this.selectedOptions.indexOf(option) > -1}"
-                  role="option"
-                  data-option="${option}"
-                  @click="${this.handleOptionClick}"
-                  @mouseDown="${this.handleOptionMouseDown}"
-                >
-                  ${this.options[option]}
-                </div>`
-            )}
-          </div>
-        </div>
+        ${this.htmlId !== '' && this.label !== ''
+          ? this.selectionsTemplate()
+          : nothing}
+        ${this.htmlId !== '' && this.label !== ''
+          ? this.comboBoxTemplate()
+          : nothing}
       </div>
     `;
   }
@@ -314,20 +364,22 @@ export class PressbooksMultiselect extends LitElement {
   }
 
   firstUpdated() {
-    this._select.hidden = true;
-    this.htmlId = this._select.id;
-    this.label = this._label.innerText;
-    this.hint = this._hint.innerText;
-    this.options = Object.fromEntries(
-      Array.from(this._select.querySelectorAll('option')).map(el => [
-        el.value,
-        el.textContent,
-      ])
-    );
-    this.selectedOptions = Array.from(
-      this._select.querySelectorAll('option[selected]')
-    ).map(el => el.value);
-    this.filteredOptions = this.options;
+    if (this._select) {
+      this._select.hidden = true;
+      this.htmlId = this._select.id;
+      this.label = this._label.innerText;
+      this.hint = this._hint ? this._hint.innerText : '';
+      this.options = Object.fromEntries(
+        Array.from(this._select.querySelectorAll('option')).map(el => [
+          el.value,
+          el.textContent,
+        ])
+      );
+      this.selectedOptions = Array.from(
+        this._select.querySelectorAll('option[selected]')
+      ).map(el => el.value);
+      this.filteredOptions = this.options;
+    }
   }
 
   _handleWindowClick(event) {
@@ -378,18 +430,18 @@ export class PressbooksMultiselect extends LitElement {
     this.requestUpdate();
   }
 
-  handleRemove(event) {
+  _handleRemove(event) {
     const { option } = event.target.closest('button').dataset;
     this.removeOption(option);
     this.updateMenuState(false);
     this.requestUpdate();
   }
 
-  handleInputFocus() {
+  _handleInputFocus() {
     this.updateMenuState(true);
   }
 
-  handleInputKeydown(event) {
+  _handleInputKeydown(event) {
     const max = Object.keys(this.filteredOptions).length - 1;
     const action = this.getActionFromKey(event, this.open);
 
@@ -415,7 +467,7 @@ export class PressbooksMultiselect extends LitElement {
     }
   }
 
-  handleInput(event) {
+  _handleInput(event) {
     if (!this.open) {
       this.open = true;
     }
@@ -431,7 +483,7 @@ export class PressbooksMultiselect extends LitElement {
     }
   }
 
-  handleOptionClick(event) {
+  _handleOptionClick(event) {
     const { option } = event.target.closest('.combo-option').dataset;
     if (this.selectedOptions.indexOf(option) > -1) {
       this.removeOption(option);
