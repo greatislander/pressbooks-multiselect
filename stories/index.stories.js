@@ -60,7 +60,6 @@ WithSelection.args = {
     </select>`,
 };
 
-
 export const Hinted = Template.bind({});
 Hinted.args = {
   slot: html`<label for="dwarves">Dwarves</label>
