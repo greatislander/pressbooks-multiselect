@@ -1,8 +1,11 @@
 .editorconfig
 .github
 .storybook
+.vscode
+coverage
 demo
 stories
+storybook-static
 test
 web-dev-server.config.mjs
 web-test-runner.config.mjs
