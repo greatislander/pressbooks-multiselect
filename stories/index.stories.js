@@ -4,41 +4,85 @@ import '../pressbooks-multiselect.js';
 export default {
   title: 'PressbooksMultiselect',
   component: 'pressbooks-multiselect',
-  argTypes: {
-    title: { control: 'text' },
-    counter: { control: 'number' },
-    textColor: { control: 'color' },
-  },
 };
 
-function Template({ title = 'Hello world', counter = 5, textColor, slot }) {
-  return html`
-    <pressbooks-multiselect
-      style="--pressbooks-multiselect-text-color: ${textColor || 'black'}"
-      .title=${title}
-      .counter=${counter}
-    >
-      ${slot}
-    </pressbooks-multiselect>
-  `;
+function Template({ slot }) {
+  return html` <pressbooks-multiselect> ${slot} </pressbooks-multiselect> `;
 }
 
 export const Regular = Template.bind({});
-
-export const CustomTitle = Template.bind({});
-CustomTitle.args = {
-  title: 'My title',
+Regular.args = {
+  slot: html`<label for="dwarves">Dwarves</label>
+    <select
+      id="dwarves"
+      name="dwarves[]"
+      multiple
+      aria-describedby="dwarves-hint"
+    >
+      <option value="thorin">Thorin</option>
+      <option value="dwalin">Dwalin</option>
+      <option value="balin">Balin</option>
+      <option value="bifur">Bifur</option>
+      <option value="bofur">Bofur</option>
+      <option value="bombur">Bombur</option>
+      <option value="fili">Fili</option>
+      <option value="kili">Kili</option>
+      <option value="oin">Oin</option>
+      <option value="gloin">Gloin</option>
+      <option value="nori">Nori</option>
+      <option value="dori">Dori</option>
+      <option value="ori">Ori</option>
+    </select>`,
 };
 
-export const CustomCounter = Template.bind({});
-CustomCounter.args = {
-  counter: 123456,
+export const WithSelection = Template.bind({});
+WithSelection.args = {
+  slot: html`<label for="dwarves">Dwarves</label>
+    <select
+      id="dwarves"
+      name="dwarves[]"
+      multiple
+      aria-describedby="dwarves-hint"
+    >
+      <option value="thorin">Thorin</option>
+      <option value="dwalin">Dwalin</option>
+      <option value="balin">Balin</option>
+      <option value="bifur" selected>Bifur</option>
+      <option value="bofur" selected>Bofur</option>
+      <option value="bombur" selected>Bombur</option>
+      <option value="fili">Fili</option>
+      <option value="kili">Kili</option>
+      <option value="oin">Oin</option>
+      <option value="gloin">Gloin</option>
+      <option value="nori">Nori</option>
+      <option value="dori">Dori</option>
+      <option value="ori">Ori</option>
+    </select>`,
 };
 
-export const SlottedContent = Template.bind({});
-SlottedContent.args = {
-  slot: html`<p>Slotted content</p>`,
-};
-SlottedContent.argTypes = {
-  slot: { table: { disable: true } },
+
+export const Hinted = Template.bind({});
+Hinted.args = {
+  slot: html`<label for="dwarves">Dwarves</label>
+    <p id="dwarves-hint">Type to choose some dwarves.</p>
+    <select
+      id="dwarves"
+      name="dwarves[]"
+      multiple
+      aria-describedby="dwarves-hint"
+    >
+      <option value="thorin">Thorin</option>
+      <option value="dwalin">Dwalin</option>
+      <option value="balin">Balin</option>
+      <option value="bifur">Bifur</option>
+      <option value="bofur">Bofur</option>
+      <option value="bombur">Bombur</option>
+      <option value="fili">Fili</option>
+      <option value="kili">Kili</option>
+      <option value="oin">Oin</option>
+      <option value="gloin">Gloin</option>
+      <option value="nori">Nori</option>
+      <option value="dori">Dori</option>
+      <option value="ori">Ori</option>
+    </select>`,
 };
