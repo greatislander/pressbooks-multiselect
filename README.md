@@ -1,6 +1,6 @@
 # \<pressbooks-multiselect>
 
-[![Latest version](https://badgen.net/npm/v/@pressbooks/multiselect)](https://npmjs.com/packages/@pressbooks/multiselect) [![MIT license](https://badgen.net/npm/license/@pressbooks/multiselect)](https://github.com/greatislander/pressbooks-multiselect/tree/main/LICENSE) 
+[![Latest version](https://badgen.net/npm/v/@pressbooks/multiselect)](https://npmjs.com/package/@pressbooks/multiselect) [![MIT license](https://badgen.net/npm/license/@pressbooks/multiselect)](https://github.com/greatislander/pressbooks-multiselect/tree/main/LICENSE) 
 
 A web component which enhances the native `<select multiple>` element, built with [Lit](https://lit.dev). This web
 component follows the [open-wc](https://github.com/open-wc/open-wc) recommendations.
