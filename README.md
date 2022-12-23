@@ -1,6 +1,12 @@
 # \<pressbooks-multiselect>
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+[![Latest version](https://badgen.net/npm/v/@pressbooks/multiselect)](https://npmjs.com/packages/@pressbooks/multiselect) [![MIT license](https://badgen.net/npm/license/@pressbooks/multiselect)](https://github.com/greatislander/pressbooks-multiselect/tree/main/LICENSE) 
+
+A web component which enhances the native `<select multiple>` element, built with [Lit](https://lit.dev). This web
+component follows the [open-wc](https://github.com/open-wc/open-wc) recommendations.
+
+It owes a great debt to [prior work](https://github.com/microsoft/sonder-ui/tree/master/src/components/multiselect) and
+[research](https://www.24a11y.com/2019/select-your-poison-part-2/) by Sarah Higley.
 
 ## Installation
 
@@ -36,7 +42,7 @@ to the rendered component as well.
 ### Styling
 
 Because this web component uses the Shadow Dom, styling is limited to modification via CSS custom properties. However,
-[there are plenty to choose from](https://github.com/greatislander/pressbooks-multiselect/blob/a87fab1f7b3ea967b3ae6b58400ed863084326ee/src/PressbooksMultiselect.js).
+[there are plenty to choose from](https://github.com/greatislander/pressbooks-multiselect/blob/a87fab1f7b3ea967b3ae6b58400ed863084326ee/src/PressbooksMultiselect.js#L4-L146).
 
 ## Linting and formatting
 
