@@ -2,6 +2,7 @@
 .github
 .storybook
 .vscode
+commitlint.config.js
 coverage
 demo
 stories
