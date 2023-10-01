@@ -264,28 +264,29 @@ export class PressbooksMultiselect extends LitElement {
     return html`<ul class="selected-options">
       <span id="${this.htmlId}-remove" hidden>remove</span>
       ${this.selectedOptions.map(
-        option => html`<li>
-          <button
-            class="remove-option"
-            type="button"
-            aria-describedby="${this.htmlId}-remove"
-            data-option="${option}"
-            @click="${this._handleRemove}"
-          >
-            <span>${this.options[option]}</span
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              aria-hidden="true"
-              role="presentation"
-              fill="currentColor"
+        option =>
+          html`<li>
+            <button
+              class="remove-option"
+              type="button"
+              aria-describedby="${this.htmlId}-remove"
+              data-option="${option}"
+              @click="${this._handleRemove}"
             >
-              <path
-                d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-              />
-            </svg>
-          </button>
-        </li>`
+              <span>${this.options[option]}</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+                role="presentation"
+                fill="currentColor"
+              >
+                <path
+                  d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+                />
+              </svg>
+            </button>
+          </li>`,
       )}
     </ul>`;
   }
@@ -333,7 +334,7 @@ export class PressbooksMultiselect extends LitElement {
               @click="${this._handleOptionClick}"
             >
               ${this.options[option]}
-            </div>`
+            </div>`,
         )}
       </div>
     </div> `;
@@ -373,10 +374,10 @@ export class PressbooksMultiselect extends LitElement {
         Array.from(this._select.querySelectorAll('option')).map(el => [
           el.value,
           el.textContent,
-        ])
+        ]),
       );
       this.selectedOptions = Array.from(
-        this._select.querySelectorAll('option[selected]')
+        this._select.querySelectorAll('option[selected]'),
       ).map(el => el.value);
       this.filteredOptions = this.options;
     }
@@ -452,7 +453,7 @@ export class PressbooksMultiselect extends LitElement {
       case this.MenuActions.Previous:
         event.preventDefault();
         return this.updateIndex(
-          this.getUpdatedIndex(this.activeIndex, max, action)
+          this.getUpdatedIndex(this.activeIndex, max, action),
         );
       case this.MenuActions.CloseSelect:
         event.preventDefault();

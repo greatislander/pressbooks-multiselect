@@ -22,7 +22,8 @@
     "test": "web-test-runner --coverage",
     "test:watch": "web-test-runner --watch",
     "storybook": "npm run analyze -- --exclude dist && web-dev-server -c .storybook/server.mjs",
-    "storybook:build": "npm run analyze -- --exclude dist && build-storybook"
+    "storybook:build": "npm run analyze -- --exclude dist && build-storybook",
+    "prepare": "husky install"
   },
   "dependencies": {
     "lit": "^2.0.2"
@@ -36,9 +37,9 @@
     "@web/test-runner": "^0.17.1",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^9.0.0",
-    "husky": "^4.3.8",
+    "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "^2.4.1"
+    "prettier": "^3.0.3"
   },
   "customElements": "custom-elements.json",
   "eslintConfig": {
@@ -50,11 +51,6 @@
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.js": [
