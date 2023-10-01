@@ -28,7 +28,7 @@
     "lit": "^2.0.2"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.6.6",
+    "@custom-elements-manifest/analyzer": "^0.8.4",
     "@open-wc/eslint-config": "^9.0.0",
     "@open-wc/testing": "^3.1.6",
     "@web/dev-server": "^0.1.34",
