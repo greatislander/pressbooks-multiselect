@@ -261,34 +261,34 @@ export class PressbooksMultiselect extends LitElement {
   }
 
   selectionsTemplate() {
-    return html`<ul class="selected-options">
-      <span id="${this.htmlId}-remove" hidden>remove</span>
-      ${this.selectedOptions.map(
-        option =>
-          html`<li>
-            <button
-              class="remove-option"
-              type="button"
-              aria-describedby="${this.htmlId}-remove"
-              data-option="${option}"
-              @click="${this._handleRemove}"
-            >
-              <span>${this.options[option]}</span
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-                role="presentation"
-                fill="currentColor"
+    return html` <span id="${this.htmlId}-remove" hidden>remove</span>
+      <ul class="selected-options">
+        ${this.selectedOptions.map(
+          option =>
+            html`<li>
+              <button
+                class="remove-option"
+                type="button"
+                aria-describedby="${this.htmlId}-remove"
+                data-option="${option}"
+                @click="${this._handleRemove}"
               >
-                <path
-                  d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-                />
-              </svg>
-            </button>
-          </li>`,
-      )}
-    </ul>`;
+                <span>${this.options[option]}</span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                  role="presentation"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+                  />
+                </svg>
+              </button>
+            </li>`,
+        )}
+      </ul>`;
   }
 
   hintTemplate() {
@@ -316,6 +316,7 @@ export class PressbooksMultiselect extends LitElement {
       <div
         class="combo-menu ${this.open ? '' : 'hidden'}"
         role="listbox"
+        aria-label="${this.label}"
         aria-multiselectable="true"
         id="${this.htmlId}-listbox"
       >
