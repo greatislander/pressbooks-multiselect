@@ -13,7 +13,7 @@ describe('PressbooksMultiselect', () => {
           <option value="strawberry">Strawberry</option>
           <option value="vanilla">Vanilla</option>
         </select>
-      </pressbooks-multiselect>`
+      </pressbooks-multiselect>`,
     );
 
     expect(el.htmlId).to.equal('flavours');
@@ -29,7 +29,7 @@ describe('PressbooksMultiselect', () => {
           <option value="strawberry">Strawberry</option>
           <option value="vanilla">Vanilla</option>
         </select>
-      </pressbooks-multiselect>`
+      </pressbooks-multiselect>`,
     );
 
     expect(el.selectedOptions).to.contain('chocolate');
@@ -50,7 +50,7 @@ describe('PressbooksMultiselect', () => {
           <option value="strawberry">Strawberry</option>
           <option value="vanilla">Vanilla</option>
         </select>
-      </pressbooks-multiselect>`
+      </pressbooks-multiselect>`,
     );
 
     expect(el.hint).to.equal('Tell us your favourite flavours.');
@@ -65,7 +65,7 @@ describe('PressbooksMultiselect', () => {
           <option value="strawberry">Strawberry</option>
           <option value="vanilla">Vanilla</option>
         </select>
-      </pressbooks-multiselect>`
+      </pressbooks-multiselect>`,
     );
 
     await expect(el).shadowDom.to.be.accessible();
