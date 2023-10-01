@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/greatislander/pressbooks-multiselect/compare/v1.0.1...v1.0.2) (2023-10-01)
+
+
+### Bug Fixes
+
+* resolve two accessibility linting issues ([95dcb40](https://github.com/greatislander/pressbooks-multiselect/commit/95dcb40edd26fb7e81eacfae6ee49ce6cacaceda))
+
 ## [1.0.1](https://github.com/greatislander/pressbooks-multiselect/compare/v1.0.0...v1.0.1) (2022-12-23)
 
 
