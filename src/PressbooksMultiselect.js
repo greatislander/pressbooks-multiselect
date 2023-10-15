@@ -332,9 +332,9 @@ export class PressbooksMultiselect extends LitElement {
 
     Object.keys(this.filteredOptions).forEach((option, index) => {
       const { group } = this.options[option];
-      // Keyboard event is handled within the listbox's _handleInputKeydown event.
-      // eslint-disable-next-line lit-a11y/click-events-have-key-events
       groupedOptions[group ?? 'null'].push(
+        // Keyboard event is handled within the listbox's _handleInputKeydown event.
+        // eslint-disable-next-line lit-a11y/click-events-have-key-events
         html`<li
           class="combo-option ${this.activeIndex === index
             ? 'option-current'
