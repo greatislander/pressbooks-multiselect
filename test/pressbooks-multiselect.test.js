@@ -70,4 +70,21 @@ describe('PressbooksMultiselect', () => {
 
     await expect(el).shadowDom.to.be.accessible();
   });
+
+  it('renders with groups', async () => {
+    const el = await fixture(
+      html`<pressbooks-multiselect>
+        <label for="flavours">Flavours</label>
+        <select name="flavours[]" id="flavours" multiple>
+          <optgroup label="Neapolitan">
+            <option value="chocolate">Chocolate</option>
+            <option value="strawberry">Strawberry</option>
+            <option value="vanilla">Vanilla</option>
+          </optgroup>
+        </select>
+      </pressbooks-multiselect>`,
+    );
+
+    expect(el.groups).to.contain('Neapolitan');
+  });
 });

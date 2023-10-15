@@ -209,6 +209,7 @@ export class PressbooksMultiselect extends LitElement {
       activeIndex: { type: Number },
       value: { type: String },
       open: { type: Boolean },
+      groups: { type: Array },
       options: { type: Object },
       selectedOptions: { type: Array },
       filteredOptions: { type: Object },
@@ -223,6 +224,7 @@ export class PressbooksMultiselect extends LitElement {
     this.activeIndex = 0;
     this.value = '';
     this.open = false;
+    this.groups = [];
     this.options = {};
     this.selectedOptions = [];
     this.filteredOptions = {};
@@ -318,15 +320,9 @@ export class PressbooksMultiselect extends LitElement {
   }
 
   comboBoxTemplate() {
-    const groups = [
-      ...new Set(
-        Object.values(this.filteredOptions).map(option => option.group),
-      ),
-    ];
-
     const groupedOptions = {};
 
-    for (const group of groups) {
+    for (const group of this.groups) {
       groupedOptions[group] = [];
     }
 
@@ -375,7 +371,7 @@ export class PressbooksMultiselect extends LitElement {
         id="${this.htmlId}-listbox"
       >
         ${map(
-          groups,
+          this.groups,
           (group, index) =>
             html`${group
               ? html`<ul
@@ -444,6 +440,11 @@ export class PressbooksMultiselect extends LitElement {
         this._select.querySelectorAll('option[selected]'),
       ).map(el => el.value);
       this.filteredOptions = this.options;
+      this.groups = [
+        ...new Set(
+          Object.values(this.filteredOptions).map(option => option.group),
+        ),
+      ];
     }
   }
 
@@ -546,6 +547,12 @@ export class PressbooksMultiselect extends LitElement {
         this.filteredOptions[key] = value;
       }
     }
+
+    this.groups = [
+      ...new Set(
+        Object.values(this.filteredOptions).map(option => option.group),
+      ),
+    ];
   }
 
   _handleOptionClick(event) {
