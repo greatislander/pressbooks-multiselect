@@ -1,4 +1,5 @@
 import { html, css, nothing, LitElement } from 'lit';
+import { map } from 'lit/directives/map.js';
 
 export class PressbooksMultiselect extends LitElement {
   static get styles() {
@@ -130,6 +131,13 @@ export class PressbooksMultiselect extends LitElement {
         box-shadow: 0;
         border-bottom-left-radius: var(--pb-combo-menu-border-radius, 4px);
         border-bottom-right-radius: var(--pb-combo-menu-border-radius, 4px);
+        margin: 0;
+        padding-inline-start: 0;
+      }
+
+      .combo-group {
+        margin: 0;
+        padding-inline-start: 0;
       }
 
       input:focus + .combo-menu {
@@ -139,7 +147,17 @@ export class PressbooksMultiselect extends LitElement {
 
       .combo-option {
         background: var(--pb-combo-option-background, #fff);
+      }
+
+      .combo-group-label {
+        background: var(--pb-combo-group-label-background, #f0f0f1);
+        font-weight: 600;
+      }
+
+      .combo-option,
+      .combo-group-label {
         cursor: default;
+        list-style: none;
         padding: var(--pb-combo-option-padding, 0.25rem 0.5rem);
         font-family: var(
           --pb-combo-option-font-family,
@@ -153,6 +171,10 @@ export class PressbooksMultiselect extends LitElement {
           'Helvetica Neue',
           sans-serif
         );
+      }
+
+      .combo-group .combo-option {
+        padding-inline-start: 1.25rem;
       }
 
       .combo-option:hover,
@@ -187,6 +209,7 @@ export class PressbooksMultiselect extends LitElement {
       activeIndex: { type: Number },
       value: { type: String },
       open: { type: Boolean },
+      groups: { type: Array },
       options: { type: Object },
       selectedOptions: { type: Array },
       filteredOptions: { type: Object },
@@ -201,6 +224,7 @@ export class PressbooksMultiselect extends LitElement {
     this.activeIndex = 0;
     this.value = '';
     this.open = false;
+    this.groups = [];
     this.options = {};
     this.selectedOptions = [];
     this.filteredOptions = {};
@@ -273,7 +297,7 @@ export class PressbooksMultiselect extends LitElement {
                 data-option="${option}"
                 @click="${this._handleRemove}"
               >
-                <span>${this.options[option]}</span
+                <span>${this.options[option].label}</span
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -296,6 +320,32 @@ export class PressbooksMultiselect extends LitElement {
   }
 
   comboBoxTemplate() {
+    const groupedOptions = {};
+
+    for (const group of this.groups) {
+      groupedOptions[group] = [];
+    }
+
+    Object.keys(this.filteredOptions).forEach((option, index) => {
+      const { group } = this.options[option];
+      groupedOptions[group ?? 'null'].push(
+        // Keyboard event is handled within the listbox's _handleInputKeydown event.
+        // eslint-disable-next-line lit-a11y/click-events-have-key-events
+        html`<li
+          class="combo-option ${this.activeIndex === index
+            ? 'option-current'
+            : ''}"
+          id="${this.htmlId}-${index}"
+          aria-selected="${this.selectedOptions.indexOf(option) > -1}"
+          role="option"
+          data-option="${option}"
+          @click="${this._handleOptionClick}"
+        >
+          ${this.options[option].label}
+        </li>`,
+      );
+    });
+
     return html`<div>
       ${this.hint ? this.hintTemplate() : nothing}
       <input
@@ -313,32 +363,35 @@ export class PressbooksMultiselect extends LitElement {
         @focus="${this._handleInputFocus}"
         @keydown="${this._handleInputKeydown}"
       />
-      <div
+      <ul
         class="combo-menu ${this.open ? '' : 'hidden'}"
         role="listbox"
         aria-label="${this.label}"
         aria-multiselectable="true"
         id="${this.htmlId}-listbox"
       >
-        ${Object.keys(this.filteredOptions).map(
-          (option, index) =>
-            // Keyboard event is handled within the listbox's _handleInputKeydown event.
-            // eslint-disable-next-line lit-a11y/click-events-have-key-events
-            html` <div
-              class="combo-option ${this.activeIndex === index
-                ? 'option-current'
-                : ''}"
-              id="${this.htmlId}-${index}"
-              aria-selected="${this.selectedOptions.indexOf(option) > -1}"
-              role="option"
-              data-option="${option}"
-              @click="${this._handleOptionClick}"
-            >
-              ${this.options[option]}
-            </div>`,
+        ${map(
+          this.groups,
+          (group, index) =>
+            html`${group
+              ? html`<ul
+                  class="combo-group"
+                  role="group"
+                  aria-labelledby="group-${index}"
+                >
+                  <li
+                    class="combo-group-label"
+                    role="presentation"
+                    id="group-${index}"
+                  >
+                    ${group}
+                  </li>
+                  ${groupedOptions[group]}
+                </ul>`
+              : html`${groupedOptions.null}`}`,
         )}
-      </div>
-    </div> `;
+      </ul>
+    </div>`;
   }
 
   render() {
@@ -374,13 +427,24 @@ export class PressbooksMultiselect extends LitElement {
       this.options = Object.fromEntries(
         Array.from(this._select.querySelectorAll('option')).map(el => [
           el.value,
-          el.textContent,
+          {
+            label: el.textContent,
+            group:
+              el.parentNode.tagName === 'OPTGROUP'
+                ? el.parentNode.getAttribute('label')
+                : null,
+          },
         ]),
       );
       this.selectedOptions = Array.from(
         this._select.querySelectorAll('option[selected]'),
       ).map(el => el.value);
       this.filteredOptions = this.options;
+      this.groups = [
+        ...new Set(
+          Object.values(this.filteredOptions).map(option => option.group),
+        ),
+      ];
     }
   }
 
@@ -478,11 +542,17 @@ export class PressbooksMultiselect extends LitElement {
 
     this.filteredOptions = {};
     for (const [key, value] of Object.entries(this.options)) {
-      const v = value.toLowerCase();
+      const v = value.label.toLowerCase();
       if (v.indexOf(filterString) === 0) {
         this.filteredOptions[key] = value;
       }
     }
+
+    this.groups = [
+      ...new Set(
+        Object.values(this.filteredOptions).map(option => option.group),
+      ),
+    ];
   }
 
   _handleOptionClick(event) {

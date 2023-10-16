@@ -85,3 +85,36 @@ Hinted.args = {
       <option value="ori">Ori</option>
     </select>`,
 };
+
+export const Grouped = Template.bind({});
+Grouped.args = {
+  slot: html`<label for="adventurers">Adventurers</label>
+    <p id="adventurers-hint">Type to choose some adventurers.</p>
+    <select
+      id="adventurers"
+      name="adventurers[]"
+      multiple
+      aria-describedby="adventurers-hint"
+    >
+      <option value="smeagol">Smeagol</option>
+      <optgroup label="Dwarves">
+        <option value="gimli">Gimli</option>
+      </optgroup>
+      <optgroup label="Elves">
+        <option value="legolas">Legolas</option>
+      </optgroup>
+      <optgroup label="Hobbits">
+        <option value="frodo">Frodo</option>
+        <option value="merry">Merry</option>
+        <option value="pippin">Pippin</option>
+        <option value="samwise">Sam</option>
+      </optgroup>
+      <optgroup label="Humans">
+        <option value="aragorn">Aragorn</option>
+        <option value="boromir">Boromir</option>
+      </optgroup>
+      <optgroup label="Wizards">
+        <option value="gandalf">Gandalf</option>
+      </optgroup>
+    </select>`,
+};
