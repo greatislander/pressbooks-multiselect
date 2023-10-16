@@ -39,6 +39,9 @@ markup will be displayed without modification.
 If the `<select>` element has a relationship with a hint via the `aria-describedby` attribute, the hint will be attached
 to the rendered component as well.
 
+If you group options within the `<select>` using [`<optgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup)
+elements, the multiselect will group options using the [ARIA grouped listbox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-grouped/).
+
 ### Styling
 
 Because this web component uses the Shadow Dom, styling is limited to modification via CSS custom properties. However,
