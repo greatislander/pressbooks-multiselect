@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0](https://github.com/greatislander/pressbooks-multiselect/compare/v1.0.2...v2.0.0) (2023-10-18)
+
+
+### Features
+
+* support grouped options (resolves [#41](https://github.com/greatislander/pressbooks-multiselect/issues/41)) ([#42](https://github.com/greatislander/pressbooks-multiselect/issues/42)) ([6c212d3](https://github.com/greatislander/pressbooks-multiselect/commit/6c212d375c7b8fc0de721a5965d0145ff12e02b3))
+
+
+### Miscellaneous Chores
+
+* release 2.0.0 ([d5a7518](https://github.com/greatislander/pressbooks-multiselect/commit/d5a7518929fa1bcff66bc7bd1117e09f22b67ee1))
+
 ## [1.0.2](https://github.com/greatislander/pressbooks-multiselect/compare/v1.0.1...v1.0.2) (2023-10-01)
 
 
