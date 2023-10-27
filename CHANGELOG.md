@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.0.0...v2.1.0) (2023-10-27)
+
+
+### Features
+
+* allow hint to be moved after component ([#55](https://github.com/greatislander/pressbooks-multiselect/issues/55)) ([3d31cdd](https://github.com/greatislander/pressbooks-multiselect/commit/3d31cdd9303b2f606b32d51c9670299456c9e94a))
+
 ## [2.0.0](https://github.com/greatislander/pressbooks-multiselect/compare/v1.0.2...v2.0.0) (2023-10-18)
 
 
