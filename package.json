@@ -3,7 +3,7 @@
   "description": "Webcomponent pressbooks-multiselect following open-wc recommendations",
   "author": "Pressbooks (Book Oven Inc.)",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "index.js",
   "module": "index.js",
   "repository": {
@@ -55,7 +55,9 @@
     "singleQuote": true,
     "arrowParens": "avoid",
     "cssDeclarationSorterOrder": "alphabetical",
-    "plugins": ["prettier-plugin-css-order"]
+    "plugins": [
+      "prettier-plugin-css-order"
+    ]
   },
   "lint-staged": {
     "*.js": [
