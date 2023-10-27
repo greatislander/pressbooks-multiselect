@@ -37,7 +37,20 @@ If you wrap a single select or a select element without a valid label, the compo
 markup will be displayed without modification.
 
 If the `<select>` element has a relationship with a hint via the `aria-describedby` attribute, the hint will be attached
-to the rendered component as well.
+to the rendered component as well. If you'd like the hint to appear after the rendered component, add the `slot="after"`
+attribute to it:
+
+```html
+<pressbooks-multiselect>
+  <label for="selections">Multiple Selections</label>
+  <select id="selections" name="selections[]" aria-describedby="selections-hint">
+    <option value="option-1">Option 1</option>
+    <!-- Et cetera. -->
+  </select>
+  <p id="selections-hint" slot="after">Pick some!</p>
+</pressbooks-multiselect>
+```
+
 
 If you group options within the `<select>` using [`<optgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup)
 elements, the multiselect will group options using the [ARIA grouped listbox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-grouped/).

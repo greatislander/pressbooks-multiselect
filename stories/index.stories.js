@@ -6,12 +6,43 @@ export default {
   component: 'pressbooks-multiselect',
 };
 
-function Template({ slot }) {
-  return html` <pressbooks-multiselect> ${slot} </pressbooks-multiselect> `;
+function Template({ slot, styles }) {
+  return html`<style>
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; } ${styles}
+    </style>
+    <pressbooks-multiselect> ${slot} </pressbooks-multiselect> `;
 }
 
 export const Regular = Template.bind({});
 Regular.args = {
+  slot: html`<label for="dwarves">Dwarves</label>
+    <select
+      id="dwarves"
+      name="dwarves[]"
+      multiple
+      aria-describedby="dwarves-hint"
+    >
+      <option value="thorin">Thorin</option>
+      <option value="dwalin">Dwalin</option>
+      <option value="balin">Balin</option>
+      <option value="bifur">Bifur</option>
+      <option value="bofur">Bofur</option>
+      <option value="bombur">Bombur</option>
+      <option value="fili">Fili</option>
+      <option value="kili">Kili</option>
+      <option value="oin">Oin</option>
+      <option value="gloin">Gloin</option>
+      <option value="nori">Nori</option>
+      <option value="dori">Dori</option>
+      <option value="ori">Ori</option>
+    </select>`,
+};
+
+export const MaxWidth = Template.bind({});
+MaxWidth.args = {
+  styles: `:root {
+    --pb-combo-container-max-width: 40rem;
+  }`,
   slot: html`<label for="dwarves">Dwarves</label>
     <select
       id="dwarves"
@@ -60,8 +91,8 @@ WithSelection.args = {
     </select>`,
 };
 
-export const Hinted = Template.bind({});
-Hinted.args = {
+export const HintedBefore = Template.bind({});
+HintedBefore.args = {
   slot: html`<label for="dwarves">Dwarves</label>
     <p id="dwarves-hint">Type to choose some dwarves.</p>
     <select
@@ -84,6 +115,32 @@ Hinted.args = {
       <option value="dori">Dori</option>
       <option value="ori">Ori</option>
     </select>`,
+};
+
+export const HintedAfter = Template.bind({});
+HintedAfter.args = {
+  slot: html`<label for="dwarves">Dwarves</label>
+    <select
+      id="dwarves"
+      name="dwarves[]"
+      multiple
+      aria-describedby="dwarves-hint"
+    >
+      <option value="thorin">Thorin</option>
+      <option value="dwalin">Dwalin</option>
+      <option value="balin">Balin</option>
+      <option value="bifur">Bifur</option>
+      <option value="bofur">Bofur</option>
+      <option value="bombur">Bombur</option>
+      <option value="fili">Fili</option>
+      <option value="kili">Kili</option>
+      <option value="oin">Oin</option>
+      <option value="gloin">Gloin</option>
+      <option value="nori">Nori</option>
+      <option value="dori">Dori</option>
+      <option value="ori">Ori</option>
+    </select>
+    <p id="dwarves-hint" slot="after">Type to choose some dwarves.</p>`,
 };
 
 export const Grouped = Template.bind({});

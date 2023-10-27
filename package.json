@@ -41,7 +41,8 @@
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.1",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "prettier-plugin-css-order": "^2.0.1"
   },
   "customElements": "custom-elements.json",
   "eslintConfig": {
@@ -52,7 +53,9 @@
   },
   "prettier": {
     "singleQuote": true,
-    "arrowParens": "avoid"
+    "arrowParens": "avoid",
+    "cssDeclarationSorterOrder": "alphabetical",
+    "plugins": ["prettier-plugin-css-order"]
   },
   "lint-staged": {
     "*.js": [
