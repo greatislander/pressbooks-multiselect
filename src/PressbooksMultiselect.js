@@ -144,6 +144,7 @@ export class PressbooksMultiselect extends LitElement {
         padding-inline-start: 0;
         position: absolute;
         width: 100%;
+        z-index: var(--pb-combo-menu-z-index, 1);
       }
 
       .combo-group {
