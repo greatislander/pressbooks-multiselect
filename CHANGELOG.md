@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/greatislander/pressbooks-multiselect/compare/v2.1.0...v2.1.1) (2023-10-28)
+
+
+### Bug Fixes
+
+* give the combo menu a z-index (resolves [#59](https://github.com/greatislander/pressbooks-multiselect/issues/59)) ([#60](https://github.com/greatislander/pressbooks-multiselect/issues/60)) ([27bcc51](https://github.com/greatislander/pressbooks-multiselect/commit/27bcc51734520fc7dd8bd9cc6d769aef05204fe1))
+
 ## [2.1.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.0.0...v2.1.0) (2023-10-27)
 
 
