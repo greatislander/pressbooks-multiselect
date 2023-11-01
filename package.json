@@ -36,7 +36,7 @@
     "@open-wc/testing": "^3.1.6",
     "@web/dev-server": "^0.3.2",
     "@web/dev-server-storybook": "^1.0.6",
-    "@web/test-runner": "^0.17.1",
+    "@web/test-runner": "^0.18.0",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
