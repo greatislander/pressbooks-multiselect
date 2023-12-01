@@ -29,7 +29,7 @@
     "lit": "^3.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.2",
+    "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^17.7.0",
     "@custom-elements-manifest/analyzer": "^0.9.0",
     "@open-wc/eslint-config": "^12.0.0",
