@@ -140,7 +140,9 @@ export class PressbooksMultiselect extends LitElement {
         border-right: var(--pb-combo-menu-border, 1px solid #8c8f94);
         box-shadow: 0;
         box-sizing: border-box;
+        height: 20rem;
         margin: 0;
+        overflow-y: scroll;
         padding-inline-start: 0;
         position: absolute;
         width: 100%;
