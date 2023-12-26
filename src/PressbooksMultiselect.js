@@ -558,7 +558,7 @@ export class PressbooksMultiselect extends LitElement {
     this.filteredOptions = {};
     for (const [key, value] of Object.entries(this.options)) {
       const v = value.label.toLowerCase();
-      if (v.indexOf(filterString) === 0) {
+      if (v.includes(filterString)) {
         this.filteredOptions[key] = value;
       }
     }
