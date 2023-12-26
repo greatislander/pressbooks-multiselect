@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.2](https://github.com/greatislander/pressbooks-multiselect/compare/v2.1.1...v2.1.2) (2023-12-26)
+
+
+### Bug Fixes
+
+* add vertical scrolling to combo box (fix [#81](https://github.com/greatislander/pressbooks-multiselect/issues/81)) ([#84](https://github.com/greatislander/pressbooks-multiselect/issues/84)) ([ad5a2b9](https://github.com/greatislander/pressbooks-multiselect/commit/ad5a2b92786288dc471f7deee19603519ee06b88))
+* search within strings (resolves [#57](https://github.com/greatislander/pressbooks-multiselect/issues/57)) ([#86](https://github.com/greatislander/pressbooks-multiselect/issues/86)) ([c4b8cf0](https://github.com/greatislander/pressbooks-multiselect/commit/c4b8cf0283c332e42f3326f8e795d67ca8407b5e))
+
 ## [2.1.1](https://github.com/greatislander/pressbooks-multiselect/compare/v2.1.0...v2.1.1) (2023-10-28)
 
 
