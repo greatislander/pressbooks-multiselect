@@ -133,6 +133,7 @@ export class PressbooksMultiselect extends LitElement {
       }
 
       .combo-menu {
+        background-color: var(--pb-combo-menu-background-color, #fff);
         border-bottom: var(--pb-combo-menu-border, 1px solid #8c8f94);
         border-bottom-left-radius: var(--pb-combo-menu-border-radius, 4px);
         border-bottom-right-radius: var(--pb-combo-menu-border-radius, 4px);
@@ -140,8 +141,9 @@ export class PressbooksMultiselect extends LitElement {
         border-right: var(--pb-combo-menu-border, 1px solid #8c8f94);
         box-shadow: 0;
         box-sizing: border-box;
-        height: 20rem;
+        height: auto;
         margin: 0;
+        max-height: 20rem;
         overflow-y: scroll;
         padding-inline-start: 0;
         position: absolute;
