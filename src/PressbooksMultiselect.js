@@ -18,8 +18,7 @@ export class PressbooksMultiselect extends LitElement {
 
       .selected-options {
         display: flex;
-        flex-wrap: wrap;
-        flex-direction: var(--pb-selected-options-flex-direction, row);
+        flex-flow: var(--pb-selected-options-flex-direction, row) wrap;
         gap: 0.5rem;
         list-style-type: none;
         max-width: var(--pb-selected-options-max-width, 100%);
