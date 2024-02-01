@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.1.3...v2.2.0) (2024-02-01)
+
+
+### Features
+
+* allow for flex direction customization ([#101](https://github.com/greatislander/pressbooks-multiselect/issues/101)) ([5c50152](https://github.com/greatislander/pressbooks-multiselect/commit/5c501526b68d87ddcd1927fb02b73358b549ad85))
+
 ## [2.1.3](https://github.com/greatislander/pressbooks-multiselect/compare/v2.1.2...v2.1.3) (2024-01-04)
 
 
