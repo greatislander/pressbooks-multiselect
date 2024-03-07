@@ -1,10 +1,12 @@
 .editorconfig
 .github
+.release-please-manifest.json
 .storybook
 .vscode
 commitlint.config.js
 coverage
 demo
+release-please-config.json
 stories
 storybook-static
 test
