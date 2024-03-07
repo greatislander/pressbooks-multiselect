@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.2.0...v2.3.0) (2024-03-07)
+
+
+### Features
+
+* support disabled state (resolves [#112](https://github.com/greatislander/pressbooks-multiselect/issues/112)) ([#114](https://github.com/greatislander/pressbooks-multiselect/issues/114)) ([849a976](https://github.com/greatislander/pressbooks-multiselect/commit/849a976caa07755530e73bf5c13434e46efb507f))
+
 ## [2.2.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.1.3...v2.2.0) (2024-02-01)
 
 
