@@ -89,6 +89,18 @@ export class PressbooksMultiselect extends LitElement {
         width: var(--pb-button-icon-size, 1.25em);
       }
 
+      .selected-options button[disabled] {
+        background: var(--pb-button-background-disabled, #f6f7f7) !important;
+        border-color: var(
+          --pb-button-border-color-disabled,
+          #dcdcde
+        ) !important;
+        box-shadow: var(--pb-button-box-shadow-disabled, none) !important;
+        color: var(--pb-button-color-disabled, #a7aaad) !important;
+        cursor: default;
+        transform: none !important;
+      }
+
       .combo-container {
         max-width: var(--pb-combo-container-max-width, 100%);
         position: relative;
@@ -96,7 +108,7 @@ export class PressbooksMultiselect extends LitElement {
       }
 
       input {
-        background-color: var(--pb-input-background-color, #fff);
+        background-color: var(--pb-input-background, #fff);
         border: var(--pb-input-border, 1px solid #8c8f94);
         border-radius: var(--pb-input-border-radius, 4px);
         box-shadow: var(--pb-input-box-shadow, 0 0 0 transparent);
@@ -127,13 +139,29 @@ export class PressbooksMultiselect extends LitElement {
         outline: var(--pb-input-outline-focus, 2px solid transparent);
       }
 
+      input:disabled {
+        background: var(
+          --pb-input-background-disabled,
+          rgba(255 255 255 / 50%)
+        );
+        border-color: var(
+          --pb-input-border-color-disabled,
+          rgba(220, 220, 222, 0.75)
+        );
+        box-shadow: var(
+          --pb-input-box-shadow-disabled,
+          inset 0 1px 2px rgba(0, 0, 0, 0.04)
+        );
+        color: var(--pb-input-color-disabled, rgba(44, 51, 56, 0.5));
+      }
+
       input.combo-open {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
 
       .combo-menu {
-        background-color: var(--pb-combo-menu-background-color, #fff);
+        background-color: var(--pb-combo-menu-background, #fff);
         border-bottom: var(--pb-combo-menu-border, 1px solid #8c8f94);
         border-bottom-left-radius: var(--pb-combo-menu-border-radius, 4px);
         border-bottom-right-radius: var(--pb-combo-menu-border-radius, 4px);
@@ -220,6 +248,7 @@ export class PressbooksMultiselect extends LitElement {
   static get properties() {
     return {
       htmlId: { type: String },
+      disabled: { type: Boolean },
       label: { type: String },
       hint: { type: String },
       activeIndex: { type: Number },
@@ -309,6 +338,7 @@ export class PressbooksMultiselect extends LitElement {
               <button
                 class="remove-option"
                 type="button"
+                ?disabled="${this.disabled}"
                 aria-describedby="${this.htmlId}-remove"
                 data-option="${option}"
                 @click="${this._handleRemove}"
@@ -373,6 +403,7 @@ export class PressbooksMultiselect extends LitElement {
         aria-label="${this.label}"
         aria-describedby="${this.htmlId}-hint"
         class="combo-input${this.open ? ' combo-open' : ''}"
+        ?disabled="${this.disabled}"
         role="combobox"
         type="text"
         @input="${this._handleInput}"
@@ -439,6 +470,9 @@ export class PressbooksMultiselect extends LitElement {
     if (this._select) {
       this._select.hidden = true;
       this.htmlId = this._select.id;
+      if (this._select.disabled) {
+        this.disabled = this._select.disabled;
+      }
       this.label = this._label.innerText;
       this.hint = this._hint ? this._hint.innerText : '';
       this.options = Object.fromEntries(
