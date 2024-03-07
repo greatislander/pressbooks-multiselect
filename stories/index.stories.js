@@ -175,3 +175,29 @@ Grouped.args = {
       </optgroup>
     </select>`,
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  slot: html`<label for="dwarves">Dwarves</label>
+    <select
+      id="dwarves"
+      name="dwarves[]"
+      disabled
+      multiple
+      aria-describedby="dwarves-hint"
+    >
+      <option value="thorin">Thorin</option>
+      <option value="dwalin">Dwalin</option>
+      <option value="balin">Balin</option>
+      <option value="bifur">Bifur</option>
+      <option value="bofur">Bofur</option>
+      <option value="bombur">Bombur</option>
+      <option value="fili">Fili</option>
+      <option value="kili">Kili</option>
+      <option value="oin">Oin</option>
+      <option value="gloin">Gloin</option>
+      <option value="nori">Nori</option>
+      <option value="dori">Dori</option>
+      <option value="ori">Ori</option>
+    </select>`,
+};
