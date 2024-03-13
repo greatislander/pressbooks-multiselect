@@ -559,6 +559,9 @@ export class PressbooksMultiselect extends LitElement {
   updateIndex(index) {
     this.activeIndex = index;
     this.requestUpdate();
+    const container = this.shadowRoot.querySelector('.combo-menu');
+    const item = this.shadowRoot.querySelector('.option-current');
+    container.scrollTop = item.offsetTop - container.offsetTop;
   }
 
   _handleRemove(event) {
