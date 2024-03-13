@@ -249,6 +249,7 @@ export class PressbooksMultiselect extends LitElement {
     return {
       htmlId: { type: String },
       disabled: { type: Boolean },
+      max: { type: Number },
       label: { type: String },
       hint: { type: String },
       activeIndex: { type: Number },
@@ -265,6 +266,7 @@ export class PressbooksMultiselect extends LitElement {
 
   constructor() {
     super();
+    this.max = 0;
     this.htmlId = '';
     this.activeIndex = 0;
     this.value = '';
@@ -327,6 +329,14 @@ export class PressbooksMultiselect extends LitElement {
     }
 
     return false;
+  }
+
+  get _selectionLessThanMax() {
+    if (this.max > 0) {
+      return this.selectedOptions.length < this.max;
+    }
+
+    return true;
   }
 
   selectionsTemplate() {
@@ -402,8 +412,10 @@ export class PressbooksMultiselect extends LitElement {
         aria-haspopup="listbox"
         aria-label="${this.label}"
         aria-describedby="${this.htmlId}-hint"
-        class="combo-input${this.open ? ' combo-open' : ''}"
-        ?disabled="${this.disabled}"
+        class="combo-input${this.open && this._selectionLessThanMax
+          ? ' combo-open'
+          : ''}"
+        ?disabled="${this.disabled || !this._selectionLessThanMax}"
         role="combobox"
         type="text"
         @input="${this._handleInput}"
@@ -411,7 +423,9 @@ export class PressbooksMultiselect extends LitElement {
         @keydown="${this._handleInputKeydown}"
       />
       <ul
-        class="combo-menu ${this.open ? '' : 'hidden'}"
+        class="combo-menu ${this.open && this._selectionLessThanMax
+          ? ''
+          : 'hidden'}"
         role="listbox"
         aria-label="${this.label}"
         aria-multiselectable="true"
@@ -545,6 +559,9 @@ export class PressbooksMultiselect extends LitElement {
   updateIndex(index) {
     this.activeIndex = index;
     this.requestUpdate();
+    const container = this.shadowRoot.querySelector('.combo-menu');
+    const item = this.shadowRoot.querySelector('.option-current');
+    container.scrollTop = item.offsetTop - container.offsetTop;
   }
 
   _handleRemove(event) {
