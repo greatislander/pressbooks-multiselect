@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.3.0...v2.4.0) (2024-03-13)
+
+
+### Features
+
+* add support for maximum items (resolves [#116](https://github.com/greatislander/pressbooks-multiselect/issues/116)) ([#117](https://github.com/greatislander/pressbooks-multiselect/issues/117)) ([a546f7b](https://github.com/greatislander/pressbooks-multiselect/commit/a546f7b0bd0391647ae89f735c09d5298ca4b4f8))
+
 ## [2.3.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.2.0...v2.3.0) (2024-03-07)
 
 
