@@ -320,12 +320,31 @@ export class PressbooksMultiselect extends LitElement {
   }
 
   get _hint() {
-    const slot = this.shadowRoot.querySelector('slot');
+    const defaultSlot = this.shadowRoot.querySelector('slot:not([name])');
+    const afterSlot = this.shadowRoot.querySelector('slot[name="after"]');
+
     if (this._select.getAttribute('aria-describedby')) {
       const hintId = this._select.getAttribute('aria-describedby');
-      return slot
-        .assignedElements()
-        .filter(node => node.matches(`#${hintId}`))[0];
+
+      // Check in default slot
+      const defaultElements = defaultSlot.assignedElements();
+      const hintInDefault = defaultElements.filter(node =>
+        node.matches(`#${hintId}`),
+      )[0];
+      if (hintInDefault) {
+        return hintInDefault;
+      }
+
+      // Check in after slot
+      if (afterSlot) {
+        const afterElements = afterSlot.assignedElements();
+        const hintInAfter = afterElements.filter(node =>
+          node.matches(`#${hintId}`),
+        )[0];
+        if (hintInAfter) {
+          return hintInAfter;
+        }
+      }
     }
 
     return false;
