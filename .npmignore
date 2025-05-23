@@ -1,5 +1,6 @@
 .editorconfig
 .github
+.nvmrc
 .release-please-manifest.json
 .storybook
 .vscode
