@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.4.1](https://github.com/greatislander/pressbooks-multiselect/compare/v2.4.0...v2.4.1) (2025-05-23)
+
+
+### Bug Fixes
+
+* after slot hint ([#139](https://github.com/greatislander/pressbooks-multiselect/issues/139)) ([59a04d2](https://github.com/greatislander/pressbooks-multiselect/commit/59a04d203cbd44b5c97a8319898f3f82856a2465))
+* close combobox on blur (resolves [#143](https://github.com/greatislander/pressbooks-multiselect/issues/143), resolves [#144](https://github.com/greatislander/pressbooks-multiselect/issues/144)) ([#145](https://github.com/greatislander/pressbooks-multiselect/issues/145)) ([62ce00a](https://github.com/greatislander/pressbooks-multiselect/commit/62ce00abb2a3fb7b12408eec1e098db5835f8f29))
+* **deps:** update dependency lit to v3.3.0 ([#156](https://github.com/greatislander/pressbooks-multiselect/issues/156)) ([eff9812](https://github.com/greatislander/pressbooks-multiselect/commit/eff9812a0582ab34ec105a462bcd1d6a1b586829))
+* resolve issue with window click handler ([#162](https://github.com/greatislander/pressbooks-multiselect/issues/162)) ([72eb75c](https://github.com/greatislander/pressbooks-multiselect/commit/72eb75c8d16ec5f483b55f0e9d36f7dc3516cfcb))
+
 ## [2.4.0](https://github.com/greatislander/pressbooks-multiselect/compare/v2.3.0...v2.4.0) (2024-03-13)
 
 
