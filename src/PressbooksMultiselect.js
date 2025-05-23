@@ -420,6 +420,7 @@ export class PressbooksMultiselect extends LitElement {
         type="text"
         @input="${this._handleInput}"
         @focus="${this._handleInputFocus}"
+        @blur="${this._handleInputBlur}"
         @keydown="${this._handleInputKeydown}"
       />
       <ul
@@ -573,6 +574,10 @@ export class PressbooksMultiselect extends LitElement {
 
   _handleInputFocus() {
     this.updateMenuState(true);
+  }
+
+  _handleInputBlur() {
+    this.updateMenuState(false);
   }
 
   _handleInputKeydown(event) {
