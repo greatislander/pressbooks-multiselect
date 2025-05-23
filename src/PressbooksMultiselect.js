@@ -492,11 +492,11 @@ export class PressbooksMultiselect extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('click', this._handleWindowClick.bind(this));
+    window.addEventListener('click', this._handleWindowClick);
   }
 
   disconnectedCallback() {
-    window.removeEventListener('click', this._handleWindowClick.bind(this));
+    window.removeEventListener('click', this._handleWindowClick);
     super.disconnectedCallback();
   }
 
