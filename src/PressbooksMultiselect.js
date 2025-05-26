@@ -1,4 +1,4 @@
-import { html, css, nothing, LitElement } from 'lit';
+import { LitElement, css, html, nothing } from 'lit';
 import { map } from 'lit/directives/map.js';
 
 export class PressbooksMultiselect extends LitElement {
@@ -407,9 +407,9 @@ export class PressbooksMultiselect extends LitElement {
         // Keyboard event is handled within the listbox's _handleInputKeydown event.
         // eslint-disable-next-line lit-a11y/click-events-have-key-events
         html`<li
-          class="combo-option ${this.activeIndex === index
-            ? 'option-current'
-            : ''}"
+          class="combo-option ${
+            this.activeIndex === index ? 'option-current' : ''
+          }"
           id="${this.htmlId}-${index}"
           aria-selected="${this.selectedOptions.indexOf(option) > -1}"
           role="option"
@@ -431,9 +431,9 @@ export class PressbooksMultiselect extends LitElement {
         aria-haspopup="listbox"
         aria-label="${this.label}"
         aria-describedby="${this.htmlId}-hint"
-        class="combo-input${this.open && this._selectionLessThanMax
-          ? ' combo-open'
-          : ''}"
+        class="combo-input${
+          this.open && this._selectionLessThanMax ? ' combo-open' : ''
+        }"
         ?disabled="${this.disabled || !this._selectionLessThanMax}"
         role="combobox"
         type="text"
@@ -443,9 +443,9 @@ export class PressbooksMultiselect extends LitElement {
         @keydown="${this._handleInputKeydown}"
       />
       <ul
-        class="combo-menu ${this.open && this._selectionLessThanMax
-          ? ''
-          : 'hidden'}"
+        class="combo-menu ${
+          this.open && this._selectionLessThanMax ? '' : 'hidden'
+        }"
         role="listbox"
         aria-label="${this.label}"
         aria-multiselectable="true"
@@ -454,8 +454,9 @@ export class PressbooksMultiselect extends LitElement {
         ${map(
           this.groups,
           (group, index) =>
-            html`${group
-              ? html`<ul
+            html`${
+              group
+                ? html`<ul
                   class="combo-group"
                   role="group"
                   aria-labelledby="group-${index}"
@@ -469,7 +470,8 @@ export class PressbooksMultiselect extends LitElement {
                   </li>
                   ${groupedOptions[group]}
                 </ul>`
-              : html`${groupedOptions.null}`}`,
+                : html`${groupedOptions.null}`
+            }`,
         )}
       </ul>
     </div>`;
@@ -479,12 +481,16 @@ export class PressbooksMultiselect extends LitElement {
     return html`
       <div class="pressbooks-multiselect">
         <slot></slot>
-        ${this.htmlId !== '' && this.label !== ''
-          ? this.selectionsTemplate()
-          : nothing}
-        ${this.htmlId !== '' && this.label !== ''
-          ? this.comboBoxTemplate()
-          : nothing}
+        ${
+          this.htmlId !== '' && this.label !== ''
+            ? this.selectionsTemplate()
+            : nothing
+        }
+        ${
+          this.htmlId !== '' && this.label !== ''
+            ? this.comboBoxTemplate()
+            : nothing
+        }
         <slot name="after"></slot>
       </div>
     `;
