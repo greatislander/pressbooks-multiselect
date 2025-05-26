@@ -4,6 +4,8 @@
 .release-please-manifest.json
 .storybook
 .vscode
+.zed
+biome.json
 commitlint.config.js
 coverage
 demo
