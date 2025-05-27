@@ -39,12 +39,12 @@ export class PressbooksMultiselect extends LitElement {
           --pb-button-font-family,
           -apple-system,
           BlinkMacSystemFont,
-          'Segoe UI',
+          "Segoe UI",
           Roboto,
           Oxygen-Sans,
           Ubuntu,
           Cantarell,
-          'Helvetica Neue',
+          "Helvetica Neue",
           sans-serif
         );
         font-size: var(--pb-button-font-size, 13px);
@@ -117,12 +117,12 @@ export class PressbooksMultiselect extends LitElement {
           --pb-input-font-family,
           -apple-system,
           BlinkMacSystemFont,
-          'Segoe UI',
+          "Segoe UI",
           Roboto,
           Oxygen-Sans,
           Ubuntu,
           Cantarell,
-          'Helvetica Neue',
+          "Helvetica Neue",
           sans-serif
         );
         font-size: var(--pb-input-font-size, 14px);
@@ -205,12 +205,12 @@ export class PressbooksMultiselect extends LitElement {
           --pb-combo-option-font-family,
           -apple-system,
           BlinkMacSystemFont,
-          'Segoe UI',
+          "Segoe UI",
           Roboto,
           Oxygen-Sans,
           Ubuntu,
           Cantarell,
-          'Helvetica Neue',
+          "Helvetica Neue",
           sans-serif
         );
         list-style: none;
@@ -233,7 +233,7 @@ export class PressbooksMultiselect extends LitElement {
         color: var(--pb-combo-option-color-active, #fff);
       }
 
-      .combo-option[aria-selected='true'] {
+      .combo-option[aria-selected="true"] {
         background: var(--pb-combo-option-background-selected, #d4002d);
         color: var(--pb-combo-option-color-selected, #fff);
       }
@@ -439,7 +439,6 @@ export class PressbooksMultiselect extends LitElement {
         type="text"
         @input="${this._handleInput}"
         @focus="${this._handleInputFocus}"
-        @blur="${this._handleInputBlur}"
         @keydown="${this._handleInputKeydown}"
       />
       <ul
@@ -498,11 +497,11 @@ export class PressbooksMultiselect extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('click', this._handleWindowClick);
+    window.addEventListener('click', this._handleWindowClick.bind(this));
   }
 
   disconnectedCallback() {
-    window.removeEventListener('click', this._handleWindowClick);
+    window.removeEventListener('click', this._handleWindowClick.bind(this));
     super.disconnectedCallback();
   }
 
@@ -599,10 +598,6 @@ export class PressbooksMultiselect extends LitElement {
 
   _handleInputFocus() {
     this.updateMenuState(true);
-  }
-
-  _handleInputBlur() {
-    this.updateMenuState(false);
   }
 
   _handleInputKeydown(event) {
