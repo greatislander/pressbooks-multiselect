@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.2](https://github.com/greatislander/pressbooks-multiselect/compare/v2.4.1...v2.4.2) (2025-05-27)
+
+
+### Bug Fixes
+
+* resolve issue with external click handler ([#166](https://github.com/greatislander/pressbooks-multiselect/issues/166)) ([7751f41](https://github.com/greatislander/pressbooks-multiselect/commit/7751f410265f28a6978a878080a5b7cf424cda63))
+
 ## [2.4.1](https://github.com/greatislander/pressbooks-multiselect/compare/v2.4.0...v2.4.1) (2025-05-23)
 
 
