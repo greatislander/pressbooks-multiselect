@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.3](https://github.com/greatislander/pressbooks-multiselect/compare/v2.4.2...v2.4.3) (2026-03-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lit to v3.3.1 ([#178](https://github.com/greatislander/pressbooks-multiselect/issues/178)) ([7bf5693](https://github.com/greatislander/pressbooks-multiselect/commit/7bf5693ca0a1784927edae68a662a56e94dd5b9c))
+
 ## [2.4.2](https://github.com/greatislander/pressbooks-multiselect/compare/v2.4.1...v2.4.2) (2025-05-27)
 
 
